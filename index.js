@@ -4,16 +4,12 @@ var url = require('url');
 
 var validURL = /^https?:\/\/[a-z\u00a1-\uffff0-9]+/;
 
-var server = http.createServer(app);
-var port = process.env.PORT || 8000;
-server.listen(port);
-console.log('Listening on port ' + port);
-
+module.exports = app
 function app (request, response) {
   response.setHeader('Access-Control-Allow-Origin', '*');
 
-  response.on('error', handleError (response, request));
-  request.on('error', handleError (response, request));
+  response.on('error', handleError(response, request));
+  request.on('error', handleError(response, request));
 
   if (request.method !== 'GET') {
     // fail
